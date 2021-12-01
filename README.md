@@ -1,25 +1,30 @@
-# advent_of-code-2021
+# Advent of Code 2021
 
-Welcome to the Advent of Code[^aoc] Kotlin project created by [hoppjan][github] using the [Advent of Code Kotlin Template][template] delivered by JetBrains.
+Hello there!
 
-In this repository, hoppjan is about to provide solutions for the puzzles using [Kotlin][kotlin] language.
+In this project, I will try to solve the daily puzzles provided by 
+[Advent of Code](https://adventofcode.com) in the
+[Kotlin programming language](https://kotlinlang.org).
 
-If you stuck with Kotlin-specific questions or anything related to this template, check out the following resources:
+## What is Advent of Code?
 
-- [Kotlin docs][docs]
-- [Kotlin Slack][slack]
-- Template [issue tracker][issues]
+Advent of Code is an annual event in December since 2015.
 
+Every year, from the first day of December to the end of advent,
+programming puzzles are published.
 
-[^aoc]:
-    [Advent of Code][aoc] – an annual event in December since 2015.
-    Every year since then, with the first day of December, a programming puzzles contest is published every day for twenty-four days.
-    A set of Christmas-oriented challenges provide any input you have to use to answer using the language of your choice.
+You can take part in the competition and try to get on the leaderboard 
+or just solve the puzzles for fun!
 
-[aoc]: https://adventofcode.com
-[docs]: https://kotlinlang.org/docs/home.html
-[github]: https://github.com/hoppjan
-[issues]: https://github.com/kotlin-hands-on/advent-of-code-kotlin-template/issues
-[kotlin]: https://kotlinlang.org
-[slack]: https://surveys.jetbrains.com/s3/kotlin-slack-sign-up
-[template]: https://github.com/kotlin-hands-on/advent-of-code-kotlin-template
+## Kotlin
+
+Kotlin is a versatile language for Android, iOS, JVM, Native or JavaScript.
+If used on the JVM, Kotlin and Java work together seamlessly.
+
+It also features null-safety by default, extension functions, data classes, and type-inference.
+
+## Repository template
+
+This repository uses the 
+[Advent of Code Kotlin Template](https://github.com/kotlin-hands-on/advent-of-code-kotlin-template) 
+delivered by JetBrains.
