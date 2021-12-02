@@ -13,6 +13,13 @@ fun readInput(name: String) = File("src", "$name.txt").readLines()
 fun readInputInts(name: String) = readInput(name).map { it.toInt() }
 
 /**
+ * Converts content of the given text file to [Instruction] list.
+ */
+fun readInputInstructions(name: String) = readInput(name).map {
+    Instruction(it.substringBefore(" "), it.substringAfter(" ").toInt())
+}
+
+/**
  * Prints test result of a part and solution.
  */
 fun <T> printTestResult(part: Int = 1, result: T, expected: T) =
