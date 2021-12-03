@@ -33,7 +33,7 @@ fun main() {
 }
 
 /**
- * Does invokes [onIncrease] every time the next number is bigger than its predecessor.
+ * Invokes [onIncrease] every time the next number is bigger than its predecessor.
  */
 private fun List<Int>.forEachIncrease(onIncrease: () -> Unit) {
     for (i in 0 until lastIndex)
