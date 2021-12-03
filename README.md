@@ -6,6 +6,9 @@ In this project, I will try to solve the daily puzzles provided by
 [Advent of Code](https://adventofcode.com) in the
 [Kotlin programming language](https://kotlinlang.org).
 
+If you are interested in better and more idiomatic solutions, check out
+[Jetbrains' Tutorial Playlist for Advent of Code 2021 in Kotlin](https://youtube.com/playlist?list=PLlFc5cFwUnmy2hYx6k3TjjFLd7QXH2CjF).
+
 ## What is Advent of Code?
 
 Advent of Code is an annual event in December since 2015.
