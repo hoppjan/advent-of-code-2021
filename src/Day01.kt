@@ -9,27 +9,7 @@ fun main() {
      */
     fun part2(input: List<Int>) = input.addTriplets().countIncreases()
 
-    // test if implementation meets criteria from the description:
-    val testInput = readInputInts("Day01_test")
-
-    // testing part 1
-    val testSolution1 = 7
-    val testOutput1 = part1(testInput)
-
-    printTestResult(1, testOutput1, testSolution1)
-    check(testOutput1 == testSolution1)
-
-    // testing part 2
-    val testSolution2 = 5
-    val testOutput2 = part2(testInput)
-
-    printTestResult(2, testOutput2, testSolution2)
-    check(testOutput2 == testSolution2)
-
-    // actual input
-    val input = readInputInts("Day01")
-    printResult(1, part1(input))
-    printResult(2, part2(input))
+    runEverything("01", 7, 5, ::part1, ::part2, IntInputReader)
 }
 
 /**

@@ -16,27 +16,7 @@ fun main() {
      */
     fun part2(input: List<String>) = input.filterO2Rating() * input.filterCO2Rating()
 
-    // test if implementation meets criteria from the description:
-    val testInput = readInput("Day03_test")
-
-    // testing part 1
-    val testSolution1 = 198
-    val testOutput1 = part1(testInput)
-
-    printTestResult(1, testOutput1, testSolution1)
-    check(testOutput1 == testSolution1)
-
-    // testing part 2
-    val testSolution2 = 230
-    val testOutput2 = part2(testInput)
-
-    printTestResult(2, testOutput2, testSolution2)
-    check(testOutput2 == testSolution2)
-
-    // actual input
-    val input = readInput("Day03")
-    printResult(1, part1(input))
-    printResult(2, part2(input))
+    runEverything("03", 198, 230, ::part1, ::part2, StringInputReader)
 }
 
 /**

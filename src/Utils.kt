@@ -2,21 +2,25 @@ import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
 
-/**
- * Reads lines from the given input txt file.
- */
-fun readInput(name: String) = File("src", "$name.txt").readLines()
 
-/**
- * Converts content of the given text file to List<Int>.
- */
-fun readInputInts(name: String) = readInput(name).map { it.toInt() }
 
-/**
- * Converts content of the given text file to [Instruction] list.
- */
-fun readInputInstructions(name: String) = readInput(name).map {
-    Instruction(it.substringBefore(" "), it.substringAfter(" ").toInt())
+fun interface InputReader<T> {
+    fun read(name: String): List<T>
+    fun readFileLines(name: String) = File("src", "$name.txt").readLines()
+}
+
+object IntInputReader: InputReader<Int> {
+    override fun read(name: String) = readFileLines(name).map { it.toInt() }
+}
+
+object StringInputReader: InputReader<String> {
+    override fun read(name: String) = readFileLines(name)
+}
+
+object InstructionInputReader: InputReader<Instruction> {
+    override fun read(name: String) = readFileLines(name).map {
+        Instruction(it.substringBefore(" "), it.substringAfter(" ").toInt())
+    }
 }
 
 /**
@@ -30,6 +34,37 @@ fun <T> printTestResult(part: Int = 1, result: T, expected: T) =
  */
 fun <T> printResult(part: Int, result: T) =
     println("result part $part: $result")
+
+/**
+ * Boilerplate code to run both parts on test and actual inputs.
+ */
+fun <I> runEverything(
+    day: String,
+    testSolution1: Int,
+    testSolution2: Int,
+    part1: (List<I>) -> Int,
+    part2: (List<I>) -> Int,
+    inputReader: InputReader<I>,
+) {
+
+    // test if implementation meets criteria from the description
+    val testInput = inputReader.read("Day${day}_test")
+
+    // testing part 1
+    val testOutput1 = part1(testInput)
+    printTestResult(1, testOutput1, testSolution1)
+    check(testOutput1 == testSolution1)
+
+    // testing part 2
+    val testOutput2 = part2(testInput)
+    printTestResult(2, testOutput2, testSolution2)
+    check(testOutput2 == testSolution2)
+
+    // using the actual input for
+    val input = inputReader.read("Day$day")
+    printResult(1, part1(input))
+    printResult(2, part2(input))
+}
 
 /**
  * Converts string to md5 hash.

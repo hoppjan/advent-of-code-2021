@@ -20,27 +20,7 @@ fun main() {
             .navigate(instructions = input)
             .result
 
-    // test if implementation meets criteria from the description:
-    val testInput = readInputInstructions("Day02_test")
-
-    // testing part 1
-    val testSolution1 = 150
-    val testOutput1 = part1(testInput)
-
-    printTestResult(1, testOutput1, testSolution1)
-    check(testOutput1 == testSolution1)
-
-    // testing part 2
-    val testSolution2 = 900
-    val testOutput2 = part2(testInput)
-
-    printTestResult(2, testOutput2, testSolution2)
-    check(testOutput2 == testSolution2)
-
-    // actual input
-    val input = readInputInstructions("Day02")
-    printResult(1, part1(input))
-    printResult(2, part2(input))
+    runEverything("02", 150, 900, ::part1, ::part2, InstructionInputReader)
 }
 
 /**
