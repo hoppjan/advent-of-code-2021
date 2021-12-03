@@ -7,7 +7,7 @@ fun main() {
     /**
      * Counts the increases from the given input measurements from the one triplet sum to another.
      */
-    fun part2(input: List<Int>) = part1(input.addTriplets())
+    fun part2(input: List<Int>) = input.addTriplets().countIncreases()
 
     // test if implementation meets criteria from the description:
     val testInput = readInputInts("Day01_test")
