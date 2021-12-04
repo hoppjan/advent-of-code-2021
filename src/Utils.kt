@@ -2,11 +2,10 @@ import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
 
-
+fun readFileLines(name: String) = File("src", "$name.txt").readLines()
 
 fun interface InputReader<T> {
     fun read(name: String): List<T>
-    fun readFileLines(name: String) = File("src", "$name.txt").readLines()
 }
 
 object IntInputReader: InputReader<Int> {
@@ -20,6 +19,26 @@ object StringInputReader: InputReader<String> {
 object InstructionInputReader: InputReader<Instruction> {
     override fun read(name: String) = readFileLines(name).map {
         Instruction(it.substringBefore(" "), it.substringAfter(" ").toInt())
+    }
+}
+
+object BingoBoardInputReader {
+    fun read(name: String): Pair<List<Int>, List<BingoBoard>> {
+        val fileLines = readFileLines(name)
+        val bingoNumbers = fileLines[0].split(",").map { it.toInt() }
+
+        val boards = fileLines
+            .drop(2)
+            .filterNot { it.isBlank() }
+            .chunked(5) { lines ->
+                lines.map { line ->
+                    line.trim()
+                        .replace("  ", " ")
+                        .split(" ")
+                        .map { it.toInt() }
+                }
+            }
+        return bingoNumbers to boards
     }
 }
 
