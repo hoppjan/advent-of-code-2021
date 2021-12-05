@@ -42,6 +42,16 @@ object BingoBoardInputReader {
     }
 }
 
+object VentCloudInputReader {
+    fun read(name: String) = readFileLines(name).map { it.toLine() }
+
+    private fun String.toLine(): Line = split(" -> ")
+        .let { Line(it.first().toPoint(), it.last().toPoint()) }
+
+    private fun String.toPoint(): Point = split(",")
+        .let { Point(it.first().toInt(), it.last().toInt()) }
+}
+
 /**
  * Prints test result of a part and solution.
  */
@@ -89,3 +99,13 @@ fun <I> runEverything(
  * Converts string to md5 hash.
  */
 fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
+
+/**
+ * Returns [IntRange] or the reversed [IntRange] if the first [Int] is bigger.
+ * This is necessary as descending [IntRange]s are just empty by default.
+ */
+infix fun Int.upTo(limit: Int) =
+    if (this < limit)
+        this..limit
+    else
+        limit..this
