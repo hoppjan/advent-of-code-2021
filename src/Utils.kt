@@ -1,5 +1,3 @@
-import java.math.BigInteger
-import java.security.MessageDigest
 
 /**
  * Prints test result of a part and solution.
@@ -43,11 +41,6 @@ fun <I> runEverything(
     printResult(1, part1(input))
     printResult(2, part2(input))
 }
-
-/**
- * Converts string to md5 hash.
- */
-fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
 
 /**
  * Returns [IntRange] or the reversed [IntRange] if the first [Int] is bigger.
