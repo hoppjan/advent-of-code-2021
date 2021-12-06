@@ -12,6 +12,10 @@ object IntInputReader: InputReader<Int> {
     override fun read(name: String) = readFileLines(name).map { it.toInt() }
 }
 
+object IntInputReader2 {
+    fun read(name: String) = readFileLines(name).first().split(",").map { it.toInt() }.toIntArray()
+}
+
 object StringInputReader: InputReader<String> {
     override fun read(name: String) = readFileLines(name)
 }
