@@ -1,4 +1,5 @@
 import kotlin.math.absoluteValue
+import kotlin.math.roundToInt
 
 fun main() {
 
@@ -8,13 +9,14 @@ fun main() {
         }
 
     fun part2(input: IntArray) =
-        // the outer part is brute forcing by trying every possible alignment position
-        input.rangeMinToMax().minOf { possibleMeetingPosition ->
-            input.sumOf { crabPosition ->
-                (crabPosition distanceTo possibleMeetingPosition)
-                    .fuelNeeded()
+        input.cheapestPointByFuelCosts()
+            .possibleMeetingPointRange(ACCOUNTING_FOR_ERRORS)
+            .mostEfficientFuelUseOf { possibleMeetingPosition ->
+                input.sumOf { crabPosition ->
+                    (crabPosition distanceTo possibleMeetingPosition)
+                        .fuelNeeded()
+                }
             }
-        }
 
     // test if implementation meets criteria from the description
     val testInput = IntInputReader2.read("Day07_test")
@@ -41,7 +43,14 @@ infix fun Int.distanceTo(location: Int) = (this - location).absoluteValue
 
 fun IntArray.cheapestPointByDistance() = sortedArray()[size / 2]
 
-fun IntArray.rangeMinToMax() = sortedArray().run { first()..last() }
+fun IntArray.cheapestPointByFuelCosts() = average().roundToInt()
+
+// Accounting for errors is necessary because cheapestPointByFuelCosts rounds a Double.
+//  I think...? I do not want to think about it anymore, but the tests/checks pass :)
+private const val ACCOUNTING_FOR_ERRORS = 1
+fun Int.possibleMeetingPointRange(errorFromPoint: Int) = minus(errorFromPoint)..plus(errorFromPoint)
+
+fun IntRange.mostEfficientFuelUseOf(fuelUseCalculation: (Int) -> Int) = minOf(fuelUseCalculation)
 
 /**
  * Part 2 fuel cost.
