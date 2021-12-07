@@ -36,7 +36,7 @@ fun <I> runEverything(
     printTestResult(2, testOutput2, testSolution2)
     check(testOutput2 == testSolution2)
 
-    // using the actual input for
+    // the actual input and outputs
     val input = inputReader.read("Day$day")
     printResult(1, part1(input))
     printResult(2, part2(input))
