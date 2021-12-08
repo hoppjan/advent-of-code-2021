@@ -59,3 +59,16 @@ object VentCloudInputReader {
 object IntInputReader2 {
     fun read(name: String) = readFileLines(name).first().split(",").map { it.toInt() }.toIntArray()
 }
+
+// Day 08
+object SevenSegmentInputReader {
+    fun read(name: String) = readFileLines(name).map { line ->
+        line.split(" | ")
+            .let { it.first().toDisplayList() puzzleTo it.last().toDisplayList() }
+    }
+
+    private fun String.toDisplayList() = trim().split(" ")
+
+    private infix fun List<String>.puzzleTo(output: List<String>) =
+        SevenSegmentDisplayPuzzle(this, output)
+}
