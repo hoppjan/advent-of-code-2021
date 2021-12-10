@@ -72,3 +72,12 @@ object SevenSegmentInputReader {
     private infix fun List<String>.puzzleTo(output: List<String>) =
         SevenSegmentDisplayPuzzle(this, output)
 }
+
+// Day 09
+object HeightMapInputReader {
+    fun read(name: String) = readFileLines(name).map { line ->
+        line.map { int ->
+            int.toString().toInt()
+        }
+    }
+}

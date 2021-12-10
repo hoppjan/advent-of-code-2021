@@ -51,3 +51,7 @@ infix fun Int.upTo(limit: Int) =
         this..limit
     else
         limit..this
+
+fun List<Int>.product() = reduce { acc, i -> acc * i }
+
+fun <E> List<E>.containsNot(element: E) = contains(element).not()
