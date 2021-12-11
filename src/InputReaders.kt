@@ -81,3 +81,15 @@ object HeightMapInputReader {
         }
     }
 }
+
+// Day 11
+object OctopusesInputReader {
+    fun read(name: String) = readFileLines(name)
+        .flatMapIndexed { y, row ->
+            row.mapIndexed { x, energy ->
+                Point(x, y) to energy.digitToInt()
+            }
+        }
+        .toMap()
+        .toMutableMap()
+}
